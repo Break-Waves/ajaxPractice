@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基础的get请求</title>
+</head>
+
+<body>
+  <h1>基础的get请求</h1>
+  <form id="form" action="" method="">
+    <input id="ipt" type="text">
+    <button id="btn">输入学生id 查询他的详细信息</button>
+  </form>
+
+  <script>
+    const oBtn = document.getElementById('btn');
+    const oIpt = document.getElementById('ipt');
+    const oForm = document.getElementById('form');
+
+
+    oForm.onsubmit = function () {
+      //1.实例化XMLHttpRequest 
+      const xhr = new XMLHttpRequest();
+
+      //2.打开路径
+      //参数1:请求方式  参数2:请求地址  参数3:是否异步
+      xhr.open("GET", "/user", true)
+
+      //3.发送请求
+      xhr.send();
+
+      //4.监听事件
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status <= 299)) {
+          //此时完全成功 可以去拿响应的数据  responseText
+          console.log(xhr.responseText);
+        }
+      }
+
+      return false;
+    }
+  </script>
+</body>
+
+</html>
+</body>
+</html>

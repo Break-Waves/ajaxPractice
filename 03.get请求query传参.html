@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基础的get请求</title>
+</head>
+
+<body>
+  <h1>基础的get请求</h1>
+  <form id="form" action="" method="">
+    <input id="ipt" type="text">
+    <button id="btn">输入学生id 查询他的详细信息</button>
+  </form>
+
+  <script>
+    const oBtn = document.getElementById('btn');
+    const oIpt = document.getElementById('ipt');
+    const oForm = document.getElementById('form');
+    oForm.onsubmit = function () {
+      //先获取用户输入的userId
+      const userId = oIpt.value;
+      const xhr = new XMLHttpRequest();
+      /* 
+        1.query传参:就是拼接在路径后的查询字符串
+        2.get请求默认读取缓存,可以在query中添加一个额外的字段值为时间戳,让每次请求的地址不一致,防止读取缓存
+      */
+      xhr.open("GET", `/user?userId=${userId}&_=${Date.now()}`, true)
+
+      xhr.send();
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status <= 299)) {
+
+          console.log(xhr.responseText);
+        }
+      }
+      return false;
+    }
+  </script>
+</body>
+
+</html>
+</body>
+</html>
